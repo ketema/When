@@ -31,6 +31,9 @@ class When
 	protected $gobyday;
 	protected $byday;
 	
+	protected $gobyhour;
+	protected $byhour;
+	
 	protected $gobysetpos;
 	protected $bysetpos;
 		
@@ -64,6 +67,9 @@ class When
 		$this->gobyday = false;
 		// setup the valid week days (0 = sunday)
 		$this->byday = range(0,6);
+		
+		$this->gobyhour = false;
+		$this->byhour = range(0,24);
 		
 		$this->gobyyearday = false;
 		$this->byyearday = range(0,366);
@@ -190,6 +196,10 @@ class When
 					$params = explode(",", $param);
 					$this->bymonth($params);
 					break;
+				case "BYHOUR":
+					$params = explode(",", $param);
+					$this->byhour($params);
+					break;
 				case "BYSETPOS":
 					$params = explode(",", $param);
 					$this->bysetpos($params);
@@ -280,6 +290,17 @@ class When
 		{
 			$this->gobymonth = true;
 			$this->bymonth = $months;
+		}
+		
+		return $this;
+	}
+	
+	public function byhour($hours)
+	{	
+		if(is_array($hours))
+		{
+			$this->gobyhour = true;
+			$this->byhour = $hours;
 		}
 		
 		return $this;
@@ -532,7 +553,19 @@ class When
 		}
 		elseif($interval == "day")
 		{
-			$this->suggestions[] = clone $this->try_date;
+
+			if($this->gobyhour)
+			{
+				foreach($this->byhour as $_hour)
+				{
+					$date = $this->try_date->format('Y-m-d');
+					$date_time = new DateTime("$date $_hour:00:00");
+					$this->suggestions[] = clone $date_time;
+				}
+			} else 
+			{
+				$this->suggestions[] = clone $this->try_date;
+			}
 		}
 		elseif($interval == "week")
 		{
