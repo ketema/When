@@ -11,6 +11,8 @@
 
 require_once('When.php');
 
+use When\When;
+
 class When_Iterator extends When implements Iterator 
 {
 	// store the current position in the array

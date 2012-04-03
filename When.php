@@ -1,4 +1,7 @@
 <?php
+
+Namespace When;
+
 /**
  * Name: When
  * Author: Thomas Planer <tplaner@gmail.com>
@@ -89,7 +92,7 @@ class When
 		$this->counter = 0;
 		
 		// max date we'll return
-		$this->end_date = new DateTime('9999-12-31');
+		$this->end_date = new \DateTime('9999-12-31');
 		
 		// the interval to increase the pattern by
 		$this->interval = 1;
@@ -118,14 +121,14 @@ class When
 			{
 				// timestamps within the RFC have a 'Z' at the end of them, remove this.
 				$start_date = trim($start_date, 'Z');
-				$this->start_date = new DateTime($start_date);
+				$this->start_date = new \DateTime($start_date);
 			}
 			
 			$this->try_date = clone $this->start_date;
 		}
-		catch(Exception $e)
+		catch(\Exception $e)
 		{
-			throw new InvalidArgumentException('Invalid start date DateTime: ' . $e);
+			throw new \InvalidArgumentException('Invalid start date DateTime: ' . $e);
 		}
 		
 		$this->freq($frequency);
@@ -141,7 +144,7 @@ class When
 		}
 		else
 		{
-			throw new InvalidArgumentException('Invalid frequency type.');
+			throw new \InvalidArgumentException('Invalid frequency type.');
 		}
 
 		return $this;
@@ -273,12 +276,12 @@ class When
 			{
 				// timestamps within the RFC have a 'Z' at the end of them, remove this.
 				$end_date = trim($end_date, 'Z');
-				$this->end_date = new DateTime($end_date);
+				$this->end_date = new \DateTime($end_date);
 			}
 		}
 		catch(Exception $e)
 		{
-			throw new InvalidArgumentException('Invalid end date DateTime: ' . $e);
+			throw new \InvalidArgumentException('Invalid end date DateTime: ' . $e);
 		}
 		
 		return $this;
@@ -469,7 +472,7 @@ class When
 						$_mdays = range(1, date('t',mktime(0,0,0,$month,1,$year)));
 						foreach($_mdays as $_mday)
 						{
-							$date_time = new DateTime($year . '-' . $month . '-' . $_mday . ' ' . $timestamp);
+							$date_time = new \DateTime($year . '-' . $month . '-' . $_mday . ' ' . $timestamp);
 							
 							$occur = ceil($_mday / 7);
 							
@@ -514,7 +517,7 @@ class When
 					$_day--;
 					
 					$_time = strtotime('+' . $_day . ' days', mktime(0, 0, 0, 1, 1, $year));
-					$this->suggestions[] = new Datetime(date('Y-m-d', $_time) . ' ' . $timestamp);
+					$this->suggestions[] = new \Datetime(date('Y-m-d', $_time) . ' ' . $timestamp);
 				}
 				else
 				{
@@ -526,7 +529,7 @@ class When
 					}
 					
 					$_time = strtotime('+' . $year_day_neg . ' days', mktime(0, 0, 0, 1, 1, $year));
-					$this->suggestions[] = new Datetime(date('Y-m-d', $_time) . ' ' . $timestamp);
+					$this->suggestions[] = new \Datetime(date('Y-m-d', $_time) . ' ' . $timestamp);
 				}					
 			}
 		}
@@ -539,7 +542,7 @@ class When
 				$_mdays = range(1, date('t',mktime(0,0,0,$_month,1,$year)));
 				foreach($_mdays as $_mday)
 				{
-					$date_time = new DateTime($year . '-' . $_month . '-' . $_mday . ' ' . $timestamp);
+					$date_time = new \DateTime($year . '-' . $_month . '-' . $_mday . ' ' . $timestamp);
 					
 					// get the week of the month (1, 2, 3, 4, 5, etc)
 					$week = $date_time->format('W');
@@ -559,7 +562,7 @@ class When
 				foreach($this->byhour as $_hour)
 				{
 					$date = $this->try_date->format('Y-m-d');
-					$date_time = new DateTime("$date $_hour:00:00");
+					$date_time = new \DateTime("$date $_hour:00:00");
 					$this->suggestions[] = clone $date_time;
 				}
 			} else 
@@ -586,12 +589,12 @@ class When
 					$_day++;
 					if($_day <= $days_in_month)
 					{
-						$tmp_date = new DateTime($year . '-' . $month . '-' . $_day . ' ' . $timestamp);
+						$tmp_date = new \DateTime($year . '-' . $month . '-' . $_day . ' ' . $timestamp);
 					}
 					else
 					{
 						//$tmp_month = $month+1;
-						$tmp_date = new DateTime($year . '-' . $month . '-' . $overflow_count . ' ' . $timestamp);
+						$tmp_date = new \DateTime($year . '-' . $month . '-' . $overflow_count . ' ' . $timestamp);
 						$tmp_date->modify('+1 month');
 						$overflow_count++;
 					}
@@ -624,7 +627,7 @@ class When
 			$_mdays = range(1, date('t',mktime(0,0,0,$month,1,$year)));
 			foreach($_mdays as $_mday)
 			{
-				$date_time = new DateTime($year . '-' . $month . '-' . $_mday . ' ' . $timestamp);
+				$date_time = new \DateTime($year . '-' . $month . '-' . $_mday . ' ' . $timestamp);
 				
 				// get the week of the month (1, 2, 3, 4, 5, etc)
 				$week = $date_time->format('W');
@@ -639,7 +642,7 @@ class When
 		{
 			foreach($this->bymonth as $_month)
 			{
-				$date_time = new DateTime($year . '-' . $_month . '-' . $month_day . ' ' . $timestamp);
+				$date_time = new \DateTime($year . '-' . $_month . '-' . $month_day . ' ' . $timestamp);
 				
 				if($date_time >= $this->start_date)
 				{

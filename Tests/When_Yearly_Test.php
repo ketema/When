@@ -1,10 +1,10 @@
 <?php
 
-require_once 'PHPUnit/Framework.php';
+require_once dirname(__FILE__) . '/../When.php';
 
-require_once './When.php';
+use When\When;
 
-class When_Yearly_Test extends PHPUnit_Framework_TestCase
+class When_Yearly_Test extends \PHPUnit_Framework_TestCase
 {
 	/**
 	 * DTSTART;TZID=US-Eastern:19970610T090000
@@ -12,16 +12,16 @@ class When_Yearly_Test extends PHPUnit_Framework_TestCase
 	 */
 	public function testOne()
 	{
-		$results[] = new DateTime('1997-06-10 09:00:00');
-		$results[] = new DateTime('1997-07-10 09:00:00');
-		$results[] = new DateTime('1998-06-10 09:00:00');
-		$results[] = new DateTime('1998-07-10 09:00:00');
-		$results[] = new DateTime('1999-06-10 09:00:00');
-		$results[] = new DateTime('1999-07-10 09:00:00');
-		$results[] = new DateTime('2000-06-10 09:00:00');
-		$results[] = new DateTime('2000-07-10 09:00:00');
-		$results[] = new DateTime('2001-06-10 09:00:00');
-		$results[] = new DateTime('2001-07-10 09:00:00');
+		$results[] = new \DateTime('1997-06-10 09:00:00');
+		$results[] = new \DateTime('1997-07-10 09:00:00');
+		$results[] = new \DateTime('1998-06-10 09:00:00');
+		$results[] = new \DateTime('1998-07-10 09:00:00');
+		$results[] = new \DateTime('1999-06-10 09:00:00');
+		$results[] = new \DateTime('1999-07-10 09:00:00');
+		$results[] = new \DateTime('2000-06-10 09:00:00');
+		$results[] = new \DateTime('2000-07-10 09:00:00');
+		$results[] = new \DateTime('2001-06-10 09:00:00');
+		$results[] = new \DateTime('2001-07-10 09:00:00');
 		
 		$r = new When();
 		$r->recur('19970610T090000', 'yearly')->count(10)->bymonth(array(6,7));
@@ -38,16 +38,16 @@ class When_Yearly_Test extends PHPUnit_Framework_TestCase
 	 */
 	public function testTwo()
 	{
-		$results[] = new DateTime('1997-01-01 09:00:00');
-		$results[] = new DateTime('1997-04-10 09:00:00');
-		$results[] = new DateTime('1997-07-19 09:00:00');
-		$results[] = new DateTime('2000-01-01 09:00:00');
-		$results[] = new DateTime('2000-04-09 09:00:00');
-		$results[] = new DateTime('2000-07-18 09:00:00');
-		$results[] = new DateTime('2003-01-01 09:00:00');
-		$results[] = new DateTime('2003-04-10 09:00:00');
-		$results[] = new DateTime('2003-07-19 09:00:00');
-		$results[] = new DateTime('2006-01-01 09:00:00');
+		$results[] = new \DateTime('1997-01-01 09:00:00');
+		$results[] = new \DateTime('1997-04-10 09:00:00');
+		$results[] = new \DateTime('1997-07-19 09:00:00');
+		$results[] = new \DateTime('2000-01-01 09:00:00');
+		$results[] = new \DateTime('2000-04-09 09:00:00');
+		$results[] = new \DateTime('2000-07-18 09:00:00');
+		$results[] = new \DateTime('2003-01-01 09:00:00');
+		$results[] = new \DateTime('2003-04-10 09:00:00');
+		$results[] = new \DateTime('2003-07-19 09:00:00');
+		$results[] = new \DateTime('2006-01-01 09:00:00');
 		
 		$r = new When();
 		$r->recur('19970101T090000', 'yearly')->interval(3)->count(10)->byyearday(array(1,100,200));
@@ -64,16 +64,16 @@ class When_Yearly_Test extends PHPUnit_Framework_TestCase
 	 */
 	public function testThree()
 	{
-		$results[] = new DateTime('1997-03-10 09:00:00');
-		$results[] = new DateTime('1999-01-10 09:00:00');
-		$results[] = new DateTime('1999-02-10 09:00:00');
-		$results[] = new DateTime('1999-03-10 09:00:00');
-		$results[] = new DateTime('2001-01-10 09:00:00');
-		$results[] = new DateTime('2001-02-10 09:00:00');
-		$results[] = new DateTime('2001-03-10 09:00:00');
-		$results[] = new DateTime('2003-01-10 09:00:00');
-		$results[] = new DateTime('2003-02-10 09:00:00');
-		$results[] = new DateTime('2003-03-10 09:00:00');
+		$results[] = new \DateTime('1997-03-10 09:00:00');
+		$results[] = new \DateTime('1999-01-10 09:00:00');
+		$results[] = new \DateTime('1999-02-10 09:00:00');
+		$results[] = new \DateTime('1999-03-10 09:00:00');
+		$results[] = new \DateTime('2001-01-10 09:00:00');
+		$results[] = new \DateTime('2001-02-10 09:00:00');
+		$results[] = new \DateTime('2001-03-10 09:00:00');
+		$results[] = new \DateTime('2003-01-10 09:00:00');
+		$results[] = new \DateTime('2003-02-10 09:00:00');
+		$results[] = new \DateTime('2003-03-10 09:00:00');
 		
 		$r = new When();
 		$r->recur('19970310T090000', 'yearly')->interval(2)->count(10)->bymonth(array(1,2,3));
@@ -90,99 +90,99 @@ class When_Yearly_Test extends PHPUnit_Framework_TestCase
 	 */
 	public function testFour()
 	{
-		$results[] = new DateTime('1998-01-01 09:00:00');
-		$results[] = new DateTime('1998-01-02 09:00:00');
-		$results[] = new DateTime('1998-01-03 09:00:00');
-		$results[] = new DateTime('1998-01-04 09:00:00');
-		$results[] = new DateTime('1998-01-05 09:00:00');
-		$results[] = new DateTime('1998-01-06 09:00:00');
-		$results[] = new DateTime('1998-01-07 09:00:00');
-		$results[] = new DateTime('1998-01-08 09:00:00');
-		$results[] = new DateTime('1998-01-09 09:00:00');
-		$results[] = new DateTime('1998-01-10 09:00:00');
-		$results[] = new DateTime('1998-01-11 09:00:00');
-		$results[] = new DateTime('1998-01-12 09:00:00');
-		$results[] = new DateTime('1998-01-13 09:00:00');
-		$results[] = new DateTime('1998-01-14 09:00:00');
-		$results[] = new DateTime('1998-01-15 09:00:00');
-		$results[] = new DateTime('1998-01-16 09:00:00');
-		$results[] = new DateTime('1998-01-17 09:00:00');
-		$results[] = new DateTime('1998-01-18 09:00:00');
-		$results[] = new DateTime('1998-01-19 09:00:00');
-		$results[] = new DateTime('1998-01-20 09:00:00');
-		$results[] = new DateTime('1998-01-21 09:00:00');
-		$results[] = new DateTime('1998-01-22 09:00:00');
-		$results[] = new DateTime('1998-01-23 09:00:00');
-		$results[] = new DateTime('1998-01-24 09:00:00');
-		$results[] = new DateTime('1998-01-25 09:00:00');
-		$results[] = new DateTime('1998-01-26 09:00:00');
-		$results[] = new DateTime('1998-01-27 09:00:00');
-		$results[] = new DateTime('1998-01-28 09:00:00');
-		$results[] = new DateTime('1998-01-29 09:00:00');
-		$results[] = new DateTime('1998-01-30 09:00:00');
-		$results[] = new DateTime('1998-01-31 09:00:00');
-		$results[] = new DateTime('1999-01-01 09:00:00');
-		$results[] = new DateTime('1999-01-02 09:00:00');
-		$results[] = new DateTime('1999-01-03 09:00:00');
-		$results[] = new DateTime('1999-01-04 09:00:00');
-		$results[] = new DateTime('1999-01-05 09:00:00');
-		$results[] = new DateTime('1999-01-06 09:00:00');
-		$results[] = new DateTime('1999-01-07 09:00:00');
-		$results[] = new DateTime('1999-01-08 09:00:00');
-		$results[] = new DateTime('1999-01-09 09:00:00');
-		$results[] = new DateTime('1999-01-10 09:00:00');
-		$results[] = new DateTime('1999-01-11 09:00:00');
-		$results[] = new DateTime('1999-01-12 09:00:00');
-		$results[] = new DateTime('1999-01-13 09:00:00');
-		$results[] = new DateTime('1999-01-14 09:00:00');
-		$results[] = new DateTime('1999-01-15 09:00:00');
-		$results[] = new DateTime('1999-01-16 09:00:00');
-		$results[] = new DateTime('1999-01-17 09:00:00');
-		$results[] = new DateTime('1999-01-18 09:00:00');
-		$results[] = new DateTime('1999-01-19 09:00:00');
-		$results[] = new DateTime('1999-01-20 09:00:00');
-		$results[] = new DateTime('1999-01-21 09:00:00');
-		$results[] = new DateTime('1999-01-22 09:00:00');
-		$results[] = new DateTime('1999-01-23 09:00:00');
-		$results[] = new DateTime('1999-01-24 09:00:00');
-		$results[] = new DateTime('1999-01-25 09:00:00');
-		$results[] = new DateTime('1999-01-26 09:00:00');
-		$results[] = new DateTime('1999-01-27 09:00:00');
-		$results[] = new DateTime('1999-01-28 09:00:00');
-		$results[] = new DateTime('1999-01-29 09:00:00');
-		$results[] = new DateTime('1999-01-30 09:00:00');
-		$results[] = new DateTime('1999-01-31 09:00:00');
-		$results[] = new DateTime('2000-01-01 09:00:00');
-		$results[] = new DateTime('2000-01-02 09:00:00');
-		$results[] = new DateTime('2000-01-03 09:00:00');
-		$results[] = new DateTime('2000-01-04 09:00:00');
-		$results[] = new DateTime('2000-01-05 09:00:00');
-		$results[] = new DateTime('2000-01-06 09:00:00');
-		$results[] = new DateTime('2000-01-07 09:00:00');
-		$results[] = new DateTime('2000-01-08 09:00:00');
-		$results[] = new DateTime('2000-01-09 09:00:00');
-		$results[] = new DateTime('2000-01-10 09:00:00');
-		$results[] = new DateTime('2000-01-11 09:00:00');
-		$results[] = new DateTime('2000-01-12 09:00:00');
-		$results[] = new DateTime('2000-01-13 09:00:00');
-		$results[] = new DateTime('2000-01-14 09:00:00');
-		$results[] = new DateTime('2000-01-15 09:00:00');
-		$results[] = new DateTime('2000-01-16 09:00:00');
-		$results[] = new DateTime('2000-01-17 09:00:00');
-		$results[] = new DateTime('2000-01-18 09:00:00');
-		$results[] = new DateTime('2000-01-19 09:00:00');
-		$results[] = new DateTime('2000-01-20 09:00:00');
-		$results[] = new DateTime('2000-01-21 09:00:00');
-		$results[] = new DateTime('2000-01-22 09:00:00');
-		$results[] = new DateTime('2000-01-23 09:00:00');
-		$results[] = new DateTime('2000-01-24 09:00:00');
-		$results[] = new DateTime('2000-01-25 09:00:00');
-		$results[] = new DateTime('2000-01-26 09:00:00');
-		$results[] = new DateTime('2000-01-27 09:00:00');
-		$results[] = new DateTime('2000-01-28 09:00:00');
-		$results[] = new DateTime('2000-01-29 09:00:00');
-		$results[] = new DateTime('2000-01-30 09:00:00');
-		$results[] = new DateTime('2000-01-31 09:00:00');
+		$results[] = new \DateTime('1998-01-01 09:00:00');
+		$results[] = new \DateTime('1998-01-02 09:00:00');
+		$results[] = new \DateTime('1998-01-03 09:00:00');
+		$results[] = new \DateTime('1998-01-04 09:00:00');
+		$results[] = new \DateTime('1998-01-05 09:00:00');
+		$results[] = new \DateTime('1998-01-06 09:00:00');
+		$results[] = new \DateTime('1998-01-07 09:00:00');
+		$results[] = new \DateTime('1998-01-08 09:00:00');
+		$results[] = new \DateTime('1998-01-09 09:00:00');
+		$results[] = new \DateTime('1998-01-10 09:00:00');
+		$results[] = new \DateTime('1998-01-11 09:00:00');
+		$results[] = new \DateTime('1998-01-12 09:00:00');
+		$results[] = new \DateTime('1998-01-13 09:00:00');
+		$results[] = new \DateTime('1998-01-14 09:00:00');
+		$results[] = new \DateTime('1998-01-15 09:00:00');
+		$results[] = new \DateTime('1998-01-16 09:00:00');
+		$results[] = new \DateTime('1998-01-17 09:00:00');
+		$results[] = new \DateTime('1998-01-18 09:00:00');
+		$results[] = new \DateTime('1998-01-19 09:00:00');
+		$results[] = new \DateTime('1998-01-20 09:00:00');
+		$results[] = new \DateTime('1998-01-21 09:00:00');
+		$results[] = new \DateTime('1998-01-22 09:00:00');
+		$results[] = new \DateTime('1998-01-23 09:00:00');
+		$results[] = new \DateTime('1998-01-24 09:00:00');
+		$results[] = new \DateTime('1998-01-25 09:00:00');
+		$results[] = new \DateTime('1998-01-26 09:00:00');
+		$results[] = new \DateTime('1998-01-27 09:00:00');
+		$results[] = new \DateTime('1998-01-28 09:00:00');
+		$results[] = new \DateTime('1998-01-29 09:00:00');
+		$results[] = new \DateTime('1998-01-30 09:00:00');
+		$results[] = new \DateTime('1998-01-31 09:00:00');
+		$results[] = new \DateTime('1999-01-01 09:00:00');
+		$results[] = new \DateTime('1999-01-02 09:00:00');
+		$results[] = new \DateTime('1999-01-03 09:00:00');
+		$results[] = new \DateTime('1999-01-04 09:00:00');
+		$results[] = new \DateTime('1999-01-05 09:00:00');
+		$results[] = new \DateTime('1999-01-06 09:00:00');
+		$results[] = new \DateTime('1999-01-07 09:00:00');
+		$results[] = new \DateTime('1999-01-08 09:00:00');
+		$results[] = new \DateTime('1999-01-09 09:00:00');
+		$results[] = new \DateTime('1999-01-10 09:00:00');
+		$results[] = new \DateTime('1999-01-11 09:00:00');
+		$results[] = new \DateTime('1999-01-12 09:00:00');
+		$results[] = new \DateTime('1999-01-13 09:00:00');
+		$results[] = new \DateTime('1999-01-14 09:00:00');
+		$results[] = new \DateTime('1999-01-15 09:00:00');
+		$results[] = new \DateTime('1999-01-16 09:00:00');
+		$results[] = new \DateTime('1999-01-17 09:00:00');
+		$results[] = new \DateTime('1999-01-18 09:00:00');
+		$results[] = new \DateTime('1999-01-19 09:00:00');
+		$results[] = new \DateTime('1999-01-20 09:00:00');
+		$results[] = new \DateTime('1999-01-21 09:00:00');
+		$results[] = new \DateTime('1999-01-22 09:00:00');
+		$results[] = new \DateTime('1999-01-23 09:00:00');
+		$results[] = new \DateTime('1999-01-24 09:00:00');
+		$results[] = new \DateTime('1999-01-25 09:00:00');
+		$results[] = new \DateTime('1999-01-26 09:00:00');
+		$results[] = new \DateTime('1999-01-27 09:00:00');
+		$results[] = new \DateTime('1999-01-28 09:00:00');
+		$results[] = new \DateTime('1999-01-29 09:00:00');
+		$results[] = new \DateTime('1999-01-30 09:00:00');
+		$results[] = new \DateTime('1999-01-31 09:00:00');
+		$results[] = new \DateTime('2000-01-01 09:00:00');
+		$results[] = new \DateTime('2000-01-02 09:00:00');
+		$results[] = new \DateTime('2000-01-03 09:00:00');
+		$results[] = new \DateTime('2000-01-04 09:00:00');
+		$results[] = new \DateTime('2000-01-05 09:00:00');
+		$results[] = new \DateTime('2000-01-06 09:00:00');
+		$results[] = new \DateTime('2000-01-07 09:00:00');
+		$results[] = new \DateTime('2000-01-08 09:00:00');
+		$results[] = new \DateTime('2000-01-09 09:00:00');
+		$results[] = new \DateTime('2000-01-10 09:00:00');
+		$results[] = new \DateTime('2000-01-11 09:00:00');
+		$results[] = new \DateTime('2000-01-12 09:00:00');
+		$results[] = new \DateTime('2000-01-13 09:00:00');
+		$results[] = new \DateTime('2000-01-14 09:00:00');
+		$results[] = new \DateTime('2000-01-15 09:00:00');
+		$results[] = new \DateTime('2000-01-16 09:00:00');
+		$results[] = new \DateTime('2000-01-17 09:00:00');
+		$results[] = new \DateTime('2000-01-18 09:00:00');
+		$results[] = new \DateTime('2000-01-19 09:00:00');
+		$results[] = new \DateTime('2000-01-20 09:00:00');
+		$results[] = new \DateTime('2000-01-21 09:00:00');
+		$results[] = new \DateTime('2000-01-22 09:00:00');
+		$results[] = new \DateTime('2000-01-23 09:00:00');
+		$results[] = new \DateTime('2000-01-24 09:00:00');
+		$results[] = new \DateTime('2000-01-25 09:00:00');
+		$results[] = new \DateTime('2000-01-26 09:00:00');
+		$results[] = new \DateTime('2000-01-27 09:00:00');
+		$results[] = new \DateTime('2000-01-28 09:00:00');
+		$results[] = new \DateTime('2000-01-29 09:00:00');
+		$results[] = new \DateTime('2000-01-30 09:00:00');
+		$results[] = new \DateTime('2000-01-31 09:00:00');
 		
 		$r = new When();
 		$r->recur('19980101T090000', 'yearly')->until('20000131T090000')->bymonth(array(1))->byday(array('SU','MO','TU','WE','TH','FR','SA'));
@@ -201,16 +201,16 @@ class When_Yearly_Test extends PHPUnit_Framework_TestCase
 	 */
 	 function testFive()
 	 {
-		$results[] = new DateTime('1997-05-12 09:00:00');
-		$results[] = new DateTime('1998-05-11 09:00:00');
-		$results[] = new DateTime('1999-05-17 09:00:00');
-		$results[] = new DateTime('2000-05-15 09:00:00');
-		$results[] = new DateTime('2001-05-14 09:00:00');
-		$results[] = new DateTime('2002-05-13 09:00:00');
-		$results[] = new DateTime('2003-05-12 09:00:00');
-		$results[] = new DateTime('2004-05-10 09:00:00');
-		$results[] = new DateTime('2005-05-16 09:00:00');
-		$results[] = new DateTime('2006-05-15 09:00:00');
+		$results[] = new \DateTime('1997-05-12 09:00:00');
+		$results[] = new \DateTime('1998-05-11 09:00:00');
+		$results[] = new \DateTime('1999-05-17 09:00:00');
+		$results[] = new \DateTime('2000-05-15 09:00:00');
+		$results[] = new \DateTime('2001-05-14 09:00:00');
+		$results[] = new \DateTime('2002-05-13 09:00:00');
+		$results[] = new \DateTime('2003-05-12 09:00:00');
+		$results[] = new \DateTime('2004-05-10 09:00:00');
+		$results[] = new \DateTime('2005-05-16 09:00:00');
+		$results[] = new \DateTime('2006-05-15 09:00:00');
 		
 		$r = new When();
 		$r->recur('19970512T090000', 'yearly')->count(10)->byweekno(array(20))->byday(array('MO'));
@@ -228,16 +228,16 @@ class When_Yearly_Test extends PHPUnit_Framework_TestCase
 	  */
 	 function testSix()
 	 {
-		$results[] = new DateTime('1997-03-13 09:00:00');
-		$results[] = new DateTime('1997-03-20 09:00:00');
-		$results[] = new DateTime('1997-03-27 09:00:00');
-		$results[] = new DateTime('1998-03-05 09:00:00');
-		$results[] = new DateTime('1998-03-12 09:00:00');
-		$results[] = new DateTime('1998-03-19 09:00:00');
-		$results[] = new DateTime('1998-03-26 09:00:00');
-		$results[] = new DateTime('1999-03-04 09:00:00');
-		$results[] = new DateTime('1999-03-11 09:00:00');
-		$results[] = new DateTime('1999-03-18 09:00:00');
+		$results[] = new \DateTime('1997-03-13 09:00:00');
+		$results[] = new \DateTime('1997-03-20 09:00:00');
+		$results[] = new \DateTime('1997-03-27 09:00:00');
+		$results[] = new \DateTime('1998-03-05 09:00:00');
+		$results[] = new \DateTime('1998-03-12 09:00:00');
+		$results[] = new \DateTime('1998-03-19 09:00:00');
+		$results[] = new \DateTime('1998-03-26 09:00:00');
+		$results[] = new \DateTime('1999-03-04 09:00:00');
+		$results[] = new \DateTime('1999-03-11 09:00:00');
+		$results[] = new \DateTime('1999-03-18 09:00:00');
 		
 		$r = new When();
 		$r->recur('19970313T090000', 'yearly')->count(10)->bymonth(array(3))->byday(array('TH'));
@@ -255,45 +255,45 @@ class When_Yearly_Test extends PHPUnit_Framework_TestCase
 	 */
 	function testSeven()
 	{
-		$results[] = new DateTime('1997-06-05 09:00:00');
-		$results[] = new DateTime('1997-06-12 09:00:00');
-		$results[] = new DateTime('1997-06-19 09:00:00');
-		$results[] = new DateTime('1997-06-26 09:00:00');
-		$results[] = new DateTime('1997-07-03 09:00:00');
-		$results[] = new DateTime('1997-07-10 09:00:00');
-		$results[] = new DateTime('1997-07-17 09:00:00');
-		$results[] = new DateTime('1997-07-24 09:00:00');
-		$results[] = new DateTime('1997-07-31 09:00:00');
-		$results[] = new DateTime('1997-08-07 09:00:00');
-		$results[] = new DateTime('1997-08-14 09:00:00');
-		$results[] = new DateTime('1997-08-21 09:00:00');
-		$results[] = new DateTime('1997-08-28 09:00:00');
-		$results[] = new DateTime('1998-06-04 09:00:00');
-		$results[] = new DateTime('1998-06-11 09:00:00');
-		$results[] = new DateTime('1998-06-18 09:00:00');
-		$results[] = new DateTime('1998-06-25 09:00:00');
-		$results[] = new DateTime('1998-07-02 09:00:00');
-		$results[] = new DateTime('1998-07-09 09:00:00');
-		$results[] = new DateTime('1998-07-16 09:00:00');
-		$results[] = new DateTime('1998-07-23 09:00:00');
-		$results[] = new DateTime('1998-07-30 09:00:00');
-		$results[] = new DateTime('1998-08-06 09:00:00');
-		$results[] = new DateTime('1998-08-13 09:00:00');
-		$results[] = new DateTime('1998-08-20 09:00:00');
-		$results[] = new DateTime('1998-08-27 09:00:00');
-		$results[] = new DateTime('1999-06-03 09:00:00');
-		$results[] = new DateTime('1999-06-10 09:00:00');
-		$results[] = new DateTime('1999-06-17 09:00:00');
-		$results[] = new DateTime('1999-06-24 09:00:00');
-		$results[] = new DateTime('1999-07-01 09:00:00');
-		$results[] = new DateTime('1999-07-08 09:00:00');
-		$results[] = new DateTime('1999-07-15 09:00:00');
-		$results[] = new DateTime('1999-07-22 09:00:00');
-		$results[] = new DateTime('1999-07-29 09:00:00');
-		$results[] = new DateTime('1999-08-05 09:00:00');
-		$results[] = new DateTime('1999-08-12 09:00:00');
-		$results[] = new DateTime('1999-08-19 09:00:00');
-		$results[] = new DateTime('1999-08-26 09:00:00');
+		$results[] = new \DateTime('1997-06-05 09:00:00');
+		$results[] = new \DateTime('1997-06-12 09:00:00');
+		$results[] = new \DateTime('1997-06-19 09:00:00');
+		$results[] = new \DateTime('1997-06-26 09:00:00');
+		$results[] = new \DateTime('1997-07-03 09:00:00');
+		$results[] = new \DateTime('1997-07-10 09:00:00');
+		$results[] = new \DateTime('1997-07-17 09:00:00');
+		$results[] = new \DateTime('1997-07-24 09:00:00');
+		$results[] = new \DateTime('1997-07-31 09:00:00');
+		$results[] = new \DateTime('1997-08-07 09:00:00');
+		$results[] = new \DateTime('1997-08-14 09:00:00');
+		$results[] = new \DateTime('1997-08-21 09:00:00');
+		$results[] = new \DateTime('1997-08-28 09:00:00');
+		$results[] = new \DateTime('1998-06-04 09:00:00');
+		$results[] = new \DateTime('1998-06-11 09:00:00');
+		$results[] = new \DateTime('1998-06-18 09:00:00');
+		$results[] = new \DateTime('1998-06-25 09:00:00');
+		$results[] = new \DateTime('1998-07-02 09:00:00');
+		$results[] = new \DateTime('1998-07-09 09:00:00');
+		$results[] = new \DateTime('1998-07-16 09:00:00');
+		$results[] = new \DateTime('1998-07-23 09:00:00');
+		$results[] = new \DateTime('1998-07-30 09:00:00');
+		$results[] = new \DateTime('1998-08-06 09:00:00');
+		$results[] = new \DateTime('1998-08-13 09:00:00');
+		$results[] = new \DateTime('1998-08-20 09:00:00');
+		$results[] = new \DateTime('1998-08-27 09:00:00');
+		$results[] = new \DateTime('1999-06-03 09:00:00');
+		$results[] = new \DateTime('1999-06-10 09:00:00');
+		$results[] = new \DateTime('1999-06-17 09:00:00');
+		$results[] = new \DateTime('1999-06-24 09:00:00');
+		$results[] = new \DateTime('1999-07-01 09:00:00');
+		$results[] = new \DateTime('1999-07-08 09:00:00');
+		$results[] = new \DateTime('1999-07-15 09:00:00');
+		$results[] = new \DateTime('1999-07-22 09:00:00');
+		$results[] = new \DateTime('1999-07-29 09:00:00');
+		$results[] = new \DateTime('1999-08-05 09:00:00');
+		$results[] = new \DateTime('1999-08-12 09:00:00');
+		$results[] = new \DateTime('1999-08-19 09:00:00');
+		$results[] = new \DateTime('1999-08-26 09:00:00');
 		
 		$r = new When();
 		$r->recur('19970605T090000', 'yearly')->count(39)->byday(array('TH'))->bymonth(array(6,7,8));
@@ -311,16 +311,16 @@ class When_Yearly_Test extends PHPUnit_Framework_TestCase
 	 */
 	function testEight()
 	{
-		$results[] = new DateTime('1996-11-05 09:00:00');
-		$results[] = new DateTime('2000-11-07 09:00:00');
-		$results[] = new DateTime('2004-11-02 09:00:00');
-		$results[] = new DateTime('2008-11-04 09:00:00');
-		$results[] = new DateTime('2012-11-06 09:00:00');
-		$results[] = new DateTime('2016-11-08 09:00:00');
-		$results[] = new DateTime('2020-11-03 09:00:00');
-		$results[] = new DateTime('2024-11-05 09:00:00');
-		$results[] = new DateTime('2028-11-07 09:00:00');
-		$results[] = new DateTime('2032-11-02 09:00:00');
+		$results[] = new \DateTime('1996-11-05 09:00:00');
+		$results[] = new \DateTime('2000-11-07 09:00:00');
+		$results[] = new \DateTime('2004-11-02 09:00:00');
+		$results[] = new \DateTime('2008-11-04 09:00:00');
+		$results[] = new \DateTime('2012-11-06 09:00:00');
+		$results[] = new \DateTime('2016-11-08 09:00:00');
+		$results[] = new \DateTime('2020-11-03 09:00:00');
+		$results[] = new \DateTime('2024-11-05 09:00:00');
+		$results[] = new \DateTime('2028-11-07 09:00:00');
+		$results[] = new \DateTime('2032-11-02 09:00:00');
 		
 		$r = new When();
 		$r->recur('19961105T090000', 'yearly')->count(10)->interval(4)->bymonth(array(11))->byday(array('TU'))->bymonthday(array(2,3,4,5,6,7,8));
@@ -338,16 +338,16 @@ class When_Yearly_Test extends PHPUnit_Framework_TestCase
 	 */
 	function testTwentyThree()
 	{
-		$results[] = new DateTime('1997-01-01 09:00:00');
-		$results[] = new DateTime('1997-04-10 09:00:00');
-		$results[] = new DateTime('1997-07-19 09:00:00');
-		$results[] = new DateTime('2000-01-01 09:00:00');
-		$results[] = new DateTime('2000-04-09 09:00:00');
-		$results[] = new DateTime('2000-07-18 09:00:00');
-		$results[] = new DateTime('2003-01-01 09:00:00');
-		$results[] = new DateTime('2003-04-10 09:00:00');
-		$results[] = new DateTime('2003-07-19 09:00:00');
-		$results[] = new DateTime('2006-01-01 09:00:00');
+		$results[] = new \DateTime('1997-01-01 09:00:00');
+		$results[] = new \DateTime('1997-04-10 09:00:00');
+		$results[] = new \DateTime('1997-07-19 09:00:00');
+		$results[] = new \DateTime('2000-01-01 09:00:00');
+		$results[] = new \DateTime('2000-04-09 09:00:00');
+		$results[] = new \DateTime('2000-07-18 09:00:00');
+		$results[] = new \DateTime('2003-01-01 09:00:00');
+		$results[] = new \DateTime('2003-04-10 09:00:00');
+		$results[] = new \DateTime('2003-07-19 09:00:00');
+		$results[] = new \DateTime('2006-01-01 09:00:00');
 		
 		$r = new When();
 		$r->recur('19970101T090000', 'yearly')->interval(3)->count(10)->byyearday(array(1,100,200));
@@ -400,11 +400,11 @@ class When_Yearly_Test extends PHPUnit_Framework_TestCase
 	 */
 	function testTwentyFour()
 	{
-		$results[] = new DateTime('2010-12-31 09:00:00');
-		$results[] = new DateTime('2010-09-23 09:00:00');
-		$results[] = new DateTime('2010-06-15 09:00:00');
-		$results[] = new DateTime('2011-12-31 09:00:00');
-		$results[] = new DateTime('2011-09-23 09:00:00');
+		$results[] = new \DateTime('2010-12-31 09:00:00');
+		$results[] = new \DateTime('2010-09-23 09:00:00');
+		$results[] = new \DateTime('2010-06-15 09:00:00');
+		$results[] = new \DateTime('2011-12-31 09:00:00');
+		$results[] = new \DateTime('2011-09-23 09:00:00');
 		
 		$r = new When();
 		$r->recur('20101231T090000', 'yearly')->count(5)->byyearday(array(-1, -100, -200));

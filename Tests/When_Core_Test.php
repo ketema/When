@@ -1,10 +1,10 @@
 <?php
 
-require_once 'PHPUnit/Framework.php';
+require_once dirname(__FILE__) . '/../When.php';
 
-require_once './When.php';
+use When\When;
 
-class When_Core_Tests extends PHPUnit_Framework_TestCase
+class When_Core_Tests extends \PHPUnit_Framework_TestCase
 {	
 	// passing an invalid DateTime
 	public function testInvalidDate()
